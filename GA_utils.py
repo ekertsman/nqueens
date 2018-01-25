@@ -25,12 +25,17 @@ class GA_utils:
 
     @classmethod
     def generate_solution(cls):
-        positions = list(range(8))
-        random.shuffle(positions)
-        lines = []
-        for p in positions:
-            lines += [p]
-        ds = DeskSolution(lines)
+        # positions = list(range(8))
+        # random.shuffle(positions)
+        # lines = []
+        # for p in positions:
+        #     lines += [p]
+        # ds = DeskSolution(lines)
+        dna = []
+        for i in range(0,24):
+            dna += [random.choice(("0","1"))]
+        dna = "".join(dna)
+        ds = cls.decode_dna(dna)
         return ds
 
     @classmethod
@@ -66,7 +71,7 @@ class GA_utils:
                 no_intersections_count -= 1
                 continue
             # check diagonals
-            if cls.count_intersections_diagonals(solution, solution.lines[i], i)  != 1:
+            if cls.count_intersections_diagonals(solution, solution.lines[i], i) != 1:
                 no_intersections_count -= 1
                 continue
         return no_intersections_count / 8
