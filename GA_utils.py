@@ -112,9 +112,9 @@ class GA_utils:
             if r < cls.cross_probability:
                 dna1 = cls.encode_dna(s1)
                 dna2 = cls.encode_dna(s2)
-                cross_point = random.randrange(1, 8)
-                res1 = "".join(dna1[:cross_point*3] + dna2[cross_point * 3:])
-                res2 = "".join(dna2[:cross_point*3] + dna1[cross_point * 3:])
+                cross_point = random.randrange(0, 24)
+                res1 = "".join(dna1[:cross_point] + dna2[cross_point:])
+                res2 = "".join(dna2[:cross_point] + dna1[cross_point:])
                 new_gen += [cls.decode_dna(res1)]
                 new_gen += [cls.decode_dna(res2)]
             else:
